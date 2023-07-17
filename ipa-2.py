@@ -1,353 +1,311 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": 1,
-   "id": "5ff2f54d",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "'''Individual Programming Assignment 2\n",
-    "\n",
-    "70 points\n",
-    "\n",
-    "This assignment will develop your proficiency with Python's control flows.\n",
-    "'''\n",
-    "\n",
-    "def shift_letter(letter, shift):\n",
-    "    '''Shift Letter.\n",
-    "    5 points.\n",
-    "\n",
-    "    Shift a letter right by the given number.\n",
-    "    Wrap the letter around if it reaches the end of the alphabet.\n",
-    "\n",
-    "    Examples:\n",
-    "    shift_letter(\"A\", 0) -> \"A\"\n",
-    "    shift_letter(\"A\", 2) -> \"C\"\n",
-    "    shift_letter(\"Z\", 1) -> \"A\"\n",
-    "    shift_letter(\"X\", 5) -> \"C\"\n",
-    "    shift_letter(\" \", _) -> \" \"\n",
-    "\n",
-    "    *Note: the single underscore `_` is used to acknowledge the presence\n",
-    "        of a value without caring about its contents.\n",
-    "\n",
-    "    Parameters\n",
-    "    ----------\n",
-    "    letter: str\n",
-    "        a single uppercase English letter, or a space.\n",
-    "    shift: int\n",
-    "        the number by which to shift the letter.\n",
-    "\n",
-    "    Returns\n",
-    "    -------\n",
-    "    str\n",
-    "        the letter, shifted appropriately, if a letter.\n",
-    "        a single space if the original letter was a space.\n",
-    "    '''\n",
-    "    if letter ==\" \":\n",
-    "        return\" \"\n",
-    "    else:\n",
-    "        my_dict={'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9, 'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}\n",
-    "        \n",
-    "        num_letters=len(my_dict)\n",
-    "        original_value=None\n",
-    "        for key, value in my_dict.items():\n",
-    "            if key==letter:\n",
-    "                original_value = value\n",
-    "                break\n",
-    "        shift_value=(original_value + shift) % num_letters\n",
-    "        shift_letter=None\n",
-    "        for key, value in my_dict.items():\n",
-    "            if value==shift_value:\n",
-    "                shift_letter = key\n",
-    "                break\n",
-    "        return shift_letter\n",
-    "\n",
-    "def caesar_cipher(message, shift):\n",
-    "    '''Caesar Cipher.\n",
-    "    10 points.\n",
-    "\n",
-    "    Apply a shift number to a string of uppercase English letters and spaces.\n",
-    "\n",
-    "    Parameters\n",
-    "    ----------\n",
-    "    message: str\n",
-    "        a string of uppercase English letters and spaces.\n",
-    "    shift: int\n",
-    "        the number by which to shift the letters.\n",
-    "\n",
-    "    Returns\n",
-    "    -------\n",
-    "    str\n",
-    "        the message, shifted appropriately.\n",
-    "    '''\n",
-    "    # Replace `pass` with your code.\n",
-    "    # Stay within the function. Only use the parameters as input. The function should return your answer.\n",
-    "    def shift_letter(letter, shift):\n",
-    "        if letter == \" \":\n",
-    "            return \" \"\n",
-    "        else:\n",
-    "            my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18,'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}\n",
-    "\n",
-    "            num_letters=len(my_dict)\n",
-    "            original_value=None\n",
-    "            for key, value in my_dict.items():\n",
-    "                if key==letter:\n",
-    "                    original_value=value\n",
-    "                    break\n",
-    "            shift_value=(original_value + shift) % num_letters\n",
-    "            shift_letter=None\n",
-    "            for key, value in my_dict.items():\n",
-    "                if value==shift_value:\n",
-    "                    shift_letter=key\n",
-    "                    break\n",
-    "            return shift_letter\n",
-    "    shift_message=\"\"\n",
-    "    for letter in message:\n",
-    "        shift_letter=shift_letter(letter, shift)\n",
-    "        shift_message+=shift_letter\n",
-    "    return shift_message\n",
-    "\n",
-    "def shift_by_letter(letter, letter_shift):\n",
-    "    '''Shift By Letter.\n",
-    "    10 points.\n",
-    "\n",
-    "    Shift a letter to the right using the number equivalent of another letter.\n",
-    "    The shift letter is any letter from A to Z, where A represents 0, B represents 1,\n",
-    "        ..., Z represents 25.\n",
-    "\n",
-    "    Examples:\n",
-    "    shift_by_letter(\"A\", \"A\") -> \"A\"\n",
-    "    shift_by_letter(\"A\", \"C\") -> \"C\"\n",
-    "    shift_by_letter(\"B\", \"K\") -> \"L\"\n",
-    "    shift_by_letter(\" \", _) -> \" \"\n",
-    "\n",
-    "    Parameters\n",
-    "    ----------\n",
-    "    letter: str\n",
-    "        a single uppercase English letter, or a space.\n",
-    "    letter_shift: str\n",
-    "        a single uppercase English letter.\n",
-    "\n",
-    "    Returns\n",
-    "    -------\n",
-    "    str\n",
-    "        the letter, shifted appropriately.\n",
-    "    '''\n",
-    "    # Replace `pass` with your code.\n",
-    "    # Stay within the function. Only use the parameters as input. The function should return your answer.\n",
-    "    if letter == \" \":\n",
-    "        return \" \"\n",
-    "    else:\n",
-    "        my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,\n",
-    "                   'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18,\n",
-    "                   'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}\n",
-    "\n",
-    "        num_letters=len(my_dict)\n",
-    "        original_value=my_dict.get(letter)\n",
-    "        if original_value is None:\n",
-    "            return letter\n",
-    "        shift_value=my_dict.get(letter_shift)\n",
-    "        if shift_value is None:\n",
-    "            return letter\n",
-    "        shift_value=(original_value + shift_value) % num_letters\n",
-    "        shift_letter=None\n",
-    "        for key, value in my_dict.items():\n",
-    "            if value==shift_value:\n",
-    "                shift_letter=key\n",
-    "                break\n",
-    "        return shifted_letter\n",
-    "\n",
-    "def vigenere_cipher(message, key):\n",
-    "    '''Vigenere Cipher.\n",
-    "    15 points.\n",
-    "\n",
-    "    Encrypts a message using a keyphrase instead of a static number.\n",
-    "    Every letter in the message is shifted by the number represented by the\n",
-    "        respective letter in the key.\n",
-    "    Spaces should be ignored.\n",
-    "\n",
-    "    Example:\n",
-    "    vigenere_cipher(\"A C\", \"KEY\") -> \"K A\"\n",
-    "\n",
-    "    If needed, the keyphrase is extended to match the length of the key.\n",
-    "        If the key is \"KEY\" and the message is \"LONGTEXT\",\n",
-    "        the key will be extended to be \"KEYKEYKE\".\n",
-    "\n",
-    "    Parameters\n",
-    "    ----------\n",
-    "    message: str\n",
-    "        a string of uppercase English letters and spaces.\n",
-    "    key: str\n",
-    "        a string of uppercase English letters. Will never be longer than the message.\n",
-    "        Will never contain spaces.\n",
-    "\n",
-    "    Returns\n",
-    "    -------\n",
-    "    str\n",
-    "        the message, shifted appropriately.\n",
-    "    '''\n",
-    "    # Replace `pass` with your code.\n",
-    "    # Stay within the function. Only use the parameters as input. The function should return your answer.\n",
-    "    my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9, 'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}\n",
-    "\n",
-    "    key = key.upper() * (len(message) // len(key)) + key.upper()[:len(message) % len(key)]\n",
-    "\n",
-    "    encrypted_message = \"\"\n",
-    "    for i in range(len(message)):\n",
-    "        letters = message[i]\n",
-    "        if letters == \" \":\n",
-    "            encrypted_message += \" \"\n",
-    "        else:\n",
-    "            message_number = my_dict[letters]\n",
-    "            key_number = my_dict[key[i]]\n",
-    "            encrypted_number = (message_number + key_number) % 26\n",
-    "            encrypted_letter = None\n",
-    "            for char, num in my_dict.items():\n",
-    "                if num == encrypted_number:\n",
-    "                    encrypted_letter = char\n",
-    "                    break\n",
-    "            encrypted_message += encrypted_letter\n",
-    "    return encrypted_message\n",
-    "\n",
-    "def scytale_cipher(message, shift):\n",
-    "    '''Scytale Cipher.\n",
-    "    15 points.\n",
-    "\n",
-    "    Encrypts a message by simulating a scytale cipher.\n",
-    "\n",
-    "    A scytale is a cylinder around which you can wrap a long strip of\n",
-    "        parchment that contained a string of apparent gibberish. The parchment,\n",
-    "        when read using the scytale, would reveal a message due to every nth\n",
-    "        letter now appearing next to each other, revealing a proper message.\n",
-    "    This encryption method is obsolete and should never be used to encrypt\n",
-    "        data in production settings.\n",
-    "\n",
-    "    You may read more about the method here:\n",
-    "        https://en.wikipedia.org/wiki/Scytale\n",
-    "\n",
-    "    You may follow this algorithm to implement a scytale-style cipher:\n",
-    "    1. Take a message to be encoded and a \"shift\" number.\n",
-    "        For this example, we will use \"INFORMATION_AGE\" as\n",
-    "        the message and 3 as the shift.\n",
-    "    2. Check if the length of the message is a multiple of\n",
-    "        the shift. If it is not, add additional underscores\n",
-    "        to the end of the message until it is.\n",
-    "        In this example, \"INFORMATION_AGE\" is already a multiple of 3,\n",
-    "        so we will leave it alone.\n",
-    "    3. This is the tricky part. Construct the encoded message.\n",
-    "        For each index i in the encoded message, use the character at the index\n",
-    "        (i // shift) + (len(message) // shift) * (i % shift) of the raw message.\n",
-    "        If this number doesn't make sense, you can play around with the cipher at\n",
-    "         https://dencode.com/en/cipher/scytale to try to understand it.\n",
-    "    4. Return the encoded message. In this case,\n",
-    "        the output should be \"IMNNA_FTAOIGROE\".\n",
-    "\n",
-    "    Example:\n",
-    "    scytale_cipher(\"INFORMATION_AGE\", 3) -> \"IMNNA_FTAOIGROE\"\n",
-    "    scytale_cipher(\"INFORMATION_AGE\", 4) -> \"IRIANMOGFANEOT__\"\n",
-    "    scytale_cipher(\"ALGORITHMS_ARE_IMPORTANT\", 8) -> \"AOTSRIOALRH_EMRNGIMA_PTT\"\n",
-    "\n",
-    "    Parameters\n",
-    "    ----------\n",
-    "    message: str\n",
-    "        a string of uppercase English letters and underscores (underscores represent spaces)\n",
-    "    shift: int\n",
-    "        a positive int that does not exceed the length of message\n",
-    "\n",
-    "    Returns\n",
-    "    -------\n",
-    "    str\n",
-    "        the encoded message\n",
-    "    '''\n",
-    "    # Replace `pass` with your code.\n",
-    "    # Stay within the function. Only use the parameters as input. The function should return your answer.\n",
-    "    my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,\n",
-    "                        'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18,\n",
-    "                        'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25, '_': 26}\n",
-    "\n",
-    "    if len(message) % shift != 0:\n",
-    "        message += \"_\" * (shift - (len(message) % shift))\n",
-    "    encoded_message = \"\"\n",
-    "    for i in range(len(message)):\n",
-    "        index = (i // shift) + (len(message) // shift) * (i % shift)\n",
-    "        encoded_message += message[index]\n",
-    "    return encoded_message\n",
-    "\n",
-    "def scytale_decipher(message, shift):\n",
-    "    '''Scytale De-cipher.\n",
-    "    15 points.\n",
-    "\n",
-    "    Decrypts a message that was originally encrypted with the `scytale_cipher` function above.\n",
-    "\n",
-    "    Example:\n",
-    "    scytale_decipher(\"IMNNA_FTAOIGROE\", 3) -> \"INFORMATION_AGE\"\n",
-    "    scytale_decipher(\"AOTSRIOALRH_EMRNGIMA_PTT\", 8) -> \"ALGORITHMS_ARE_IMPORTANT\"\n",
-    "    scytale_decipher(\"IRIANMOGFANEOT__\", 4) -> \"INFORMATION_AGE_\"\n",
-    "\n",
-    "    There is no further brief for this number.\n",
-    "\n",
-    "    Parameters\n",
-    "    ----------\n",
-    "    message: str\n",
-    "        a string of uppercase English letters and underscores (underscores represent spaces)\n",
-    "    shift: int\n",
-    "        a positive int that does not exceed the length of message\n",
-    "\n",
-    "    Returns\n",
-    "    -------\n",
-    "    str\n",
-    "        the decoded message\n",
-    "    '''\n",
-    "    # Replace `pass` with your code.\n",
-    "    # Stay within the function. Only use the parameters as input. The function should return your answer.\n",
-    "    my_dict = {0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H', 8: 'I', 9: 'J',\n",
-    "               10: 'K', 11: 'L', 12: 'M', 13: 'N', 14: 'O', 15: 'P', 16: 'Q', 17: 'R', 18: 'S',\n",
-    "               19: 'T', 20: 'U', 21: 'V', 22: 'W', 23: 'X', 24: 'Y', 25: 'Z', 26: '_'}\n",
-    "\n",
-    "    number_rows = len(message) // shift\n",
-    "    grid = [[None] * shift for _ in range(number_rows)]\n",
-    "    for i, char in enumerate(message):\n",
-    "        rows = i // shift\n",
-    "        cols = i % shift\n",
-    "        grid[rows][cols] = char\n",
-    "    decoded_message = \"\"\n",
-    "    for cols in range(shift):\n",
-    "        for rows in range(number_rows):\n",
-    "            char = grid[rows][cols]\n",
-    "            decoded_message += char\n",
-    "\n",
-    "    return decoded_message"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "a6f08b77",
-   "metadata": {},
-   "outputs": [],
-   "source": []
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3 (ipykernel)",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.10.9"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 5
-}
+'''Individual Programming Assignment 2
+
+70 points
+
+This assignment will develop your proficiency with Python's control flows.
+'''
+
+def shift_letter(letter, shift):
+    '''Shift Letter.
+    5 points.
+
+    Shift a letter right by the given number.
+    Wrap the letter around if it reaches the end of the alphabet.
+
+    Examples:
+    shift_letter("A", 0) -> "A"
+    shift_letter("A", 2) -> "C"
+    shift_letter("Z", 1) -> "A"
+    shift_letter("X", 5) -> "C"
+    shift_letter(" ", _) -> " "
+
+    *Note: the single underscore `_` is used to acknowledge the presence
+        of a value without caring about its contents.
+
+    Parameters
+    ----------
+    letter: str
+        a single uppercase English letter, or a space.
+    shift: int
+        the number by which to shift the letter.
+
+    Returns
+    -------
+    str
+        the letter, shifted appropriately, if a letter.
+        a single space if the original letter was a space.
+    '''
+    if letter ==" ":
+        return" "
+    else:
+        my_dict={'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9, 'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}
+        
+        num_letters=len(my_dict)
+        original_value=None
+        for key, value in my_dict.items():
+            if key==letter:
+                original_value = value
+                break
+        shift_value=(original_value + shift) % num_letters
+        shift_letter=None
+        for key, value in my_dict.items():
+            if value==shift_value:
+                shift_letter = key
+                break
+        return shift_letter
+
+def caesar_cipher(message, shift):
+    '''Caesar Cipher.
+    10 points.
+
+    Apply a shift number to a string of uppercase English letters and spaces.
+
+    Parameters
+    ----------
+    message: str
+        a string of uppercase English letters and spaces.
+    shift: int
+        the number by which to shift the letters.
+
+    Returns
+    -------
+    str
+        the message, shifted appropriately.
+    '''
+    # Replace `pass` with your code.
+    # Stay within the function. Only use the parameters as input. The function should return your answer.
+    def shift_letter(letter, shift):
+        if letter == " ":
+            return " "
+        else:
+            my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18,'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}
+
+            num_letters=len(my_dict)
+            original_value=None
+            for key, value in my_dict.items():
+                if key==letter:
+                    original_value=value
+                    break
+            shift_value=(original_value + shift) % num_letters
+            shift_letter=None
+            for key, value in my_dict.items():
+                if value==shift_value:
+                    shift_letter=key
+                    break
+            return shift_letter
+    shift_message=""
+    for letter in message:
+        shift_letter=shift_letter(letter, shift)
+        shift_message+=shift_letter
+    return shift_message
+
+def shift_by_letter(letter, letter_shift):
+    '''Shift By Letter.
+    10 points.
+
+    Shift a letter to the right using the number equivalent of another letter.
+    The shift letter is any letter from A to Z, where A represents 0, B represents 1,
+        ..., Z represents 25.
+
+    Examples:
+    shift_by_letter("A", "A") -> "A"
+    shift_by_letter("A", "C") -> "C"
+    shift_by_letter("B", "K") -> "L"
+    shift_by_letter(" ", _) -> " "
+
+    Parameters
+    ----------
+    letter: str
+        a single uppercase English letter, or a space.
+    letter_shift: str
+        a single uppercase English letter.
+
+    Returns
+    -------
+    str
+        the letter, shifted appropriately.
+    '''
+    # Replace `pass` with your code.
+    # Stay within the function. Only use the parameters as input. The function should return your answer.
+    if letter == " ":
+        return " "
+    else:
+        my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,
+                   'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18,
+                   'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}
+
+        num_letters=len(my_dict)
+        original_value=my_dict.get(letter)
+        if original_value is None:
+            return letter
+        shift_value=my_dict.get(letter_shift)
+        if shift_value is None:
+            return letter
+        shift_value=(original_value + shift_value) % num_letters
+        shift_letter=None
+        for key, value in my_dict.items():
+            if value==shift_value:
+                shift_letter=key
+                break
+        return shifted_letter
+
+def vigenere_cipher(message, key):
+    '''Vigenere Cipher.
+    15 points.
+
+    Encrypts a message using a keyphrase instead of a static number.
+    Every letter in the message is shifted by the number represented by the
+        respective letter in the key.
+    Spaces should be ignored.
+
+    Example:
+    vigenere_cipher("A C", "KEY") -> "K A"
+
+    If needed, the keyphrase is extended to match the length of the key.
+        If the key is "KEY" and the message is "LONGTEXT",
+        the key will be extended to be "KEYKEYKE".
+
+    Parameters
+    ----------
+    message: str
+        a string of uppercase English letters and spaces.
+    key: str
+        a string of uppercase English letters. Will never be longer than the message.
+        Will never contain spaces.
+
+    Returns
+    -------
+    str
+        the message, shifted appropriately.
+    '''
+    # Replace `pass` with your code.
+    # Stay within the function. Only use the parameters as input. The function should return your answer.
+    my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9, 'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}
+
+    key = key.upper() * (len(message) // len(key)) + key.upper()[:len(message) % len(key)]
+
+    encrypted_message = ""
+    for i in range(len(message)):
+        letters = message[i]
+        if letters == " ":
+            encrypted_message += " "
+        else:
+            message_number = my_dict[letters]
+            key_number = my_dict[key[i]]
+            encrypted_number = (message_number + key_number) % 26
+            encrypted_letter = None
+            for char, num in my_dict.items():
+                if num == encrypted_number:
+                    encrypted_letter = char
+                    break
+            encrypted_message += encrypted_letter
+    return encrypted_message
+
+def scytale_cipher(message, shift):
+    '''Scytale Cipher.
+    15 points.
+
+    Encrypts a message by simulating a scytale cipher.
+
+    A scytale is a cylinder around which you can wrap a long strip of
+        parchment that contained a string of apparent gibberish. The parchment,
+        when read using the scytale, would reveal a message due to every nth
+        letter now appearing next to each other, revealing a proper message.
+    This encryption method is obsolete and should never be used to encrypt
+        data in production settings.
+
+    You may read more about the method here:
+        https://en.wikipedia.org/wiki/Scytale
+
+    You may follow this algorithm to implement a scytale-style cipher:
+    1. Take a message to be encoded and a "shift" number.
+        For this example, we will use "INFORMATION_AGE" as
+        the message and 3 as the shift.
+    2. Check if the length of the message is a multiple of
+        the shift. If it is not, add additional underscores
+        to the end of the message until it is.
+        In this example, "INFORMATION_AGE" is already a multiple of 3,
+        so we will leave it alone.
+    3. This is the tricky part. Construct the encoded message.
+        For each index i in the encoded message, use the character at the index
+        (i // shift) + (len(message) // shift) * (i % shift) of the raw message.
+        If this number doesn't make sense, you can play around with the cipher at
+         https://dencode.com/en/cipher/scytale to try to understand it.
+    4. Return the encoded message. In this case,
+        the output should be "IMNNA_FTAOIGROE".
+
+    Example:
+    scytale_cipher("INFORMATION_AGE", 3) -> "IMNNA_FTAOIGROE"
+    scytale_cipher("INFORMATION_AGE", 4) -> "IRIANMOGFANEOT__"
+    scytale_cipher("ALGORITHMS_ARE_IMPORTANT", 8) -> "AOTSRIOALRH_EMRNGIMA_PTT"
+
+    Parameters
+    ----------
+    message: str
+        a string of uppercase English letters and underscores (underscores represent spaces)
+    shift: int
+        a positive int that does not exceed the length of message
+
+    Returns
+    -------
+    str
+        the encoded message
+    '''
+    # Replace `pass` with your code.
+    # Stay within the function. Only use the parameters as input. The function should return your answer.
+    my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,
+                        'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18,
+                        'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25, '_': 26}
+
+    if len(message) % shift != 0:
+        message += "_" * (shift - (len(message) % shift))
+    encoded_message = ""
+    for i in range(len(message)):
+        index = (i // shift) + (len(message) // shift) * (i % shift)
+        encoded_message += message[index]
+    return encoded_message
+
+def scytale_decipher(message, shift):
+    '''Scytale De-cipher.
+    15 points.
+
+    Decrypts a message that was originally encrypted with the `scytale_cipher` function above.
+
+    Example:
+    scytale_decipher("IMNNA_FTAOIGROE", 3) -> "INFORMATION_AGE"
+    scytale_decipher("AOTSRIOALRH_EMRNGIMA_PTT", 8) -> "ALGORITHMS_ARE_IMPORTANT"
+    scytale_decipher("IRIANMOGFANEOT__", 4) -> "INFORMATION_AGE_"
+
+    There is no further brief for this number.
+
+    Parameters
+    ----------
+    message: str
+        a string of uppercase English letters and underscores (underscores represent spaces)
+    shift: int
+        a positive int that does not exceed the length of message
+
+    Returns
+    -------
+    str
+        the decoded message
+    '''
+    # Replace `pass` with your code.
+    # Stay within the function. Only use the parameters as input. The function should return your answer.
+    my_dict = {0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H', 8: 'I', 9: 'J',
+               10: 'K', 11: 'L', 12: 'M', 13: 'N', 14: 'O', 15: 'P', 16: 'Q', 17: 'R', 18: 'S',
+               19: 'T', 20: 'U', 21: 'V', 22: 'W', 23: 'X', 24: 'Y', 25: 'Z', 26: '_'}
+
+    number_rows = len(message) // shift
+    grid = [[None] * shift for _ in range(number_rows)]
+    for i, char in enumerate(message):
+        rows = i // shift
+        cols = i % shift
+        grid[rows][cols] = char
+    decoded_message = ""
+    for cols in range(shift):
+        for rows in range(number_rows):
+            char = grid[rows][cols]
+            decoded_message += char
+
+    return decoded_message
