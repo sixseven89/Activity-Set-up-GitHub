@@ -35,25 +35,32 @@ def shift_letter(letter, shift):
         the letter, shifted appropriately, if a letter.
         a single space if the original letter was a space.
     '''
-    if letter ==" ":
-        return" "
+    if letter == " ":
+        return " "
     else:
-        my_dict={'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9, 'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}
+        my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,
+                   'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18,
+                   'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}
         
-        num_letters=len(my_dict)
-        original_value=None
+        num_letters = len(my_dict)
+
+        original_value = None
         for key, value in my_dict.items():
-            if key==letter:
+            if key == letter:
                 original_value = value
                 break
-        shift_value=(original_value + shift) % num_letters
-        shift_letter=None
-        for key, value in my_dict.items():
-            if value==shift_value:
-                shift_letter = key
-                break
-        return shift_letter
 
+        shifted_value = (original_value + shift) % num_letters
+
+        shifted_letter = None
+        for key, value in my_dict.items():
+            if value == shifted_value:
+                shifted_letter = key
+                break
+
+        return shifted_letter
+
+    
 def caesar_cipher(message, shift):
     '''Caesar Cipher.
     10 points.
@@ -78,26 +85,35 @@ def caesar_cipher(message, shift):
         if letter == " ":
             return " "
         else:
-            my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18,'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}
+            my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,
+                       'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18,
+                       'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}
 
-            num_letters=len(my_dict)
-            original_value=None
+            num_letters = len(my_dict)
+
+            original_value = None
             for key, value in my_dict.items():
-                if key==letter:
-                    original_value=value
+                if key == letter:
+                    original_value = value
                     break
-            shift_value=(original_value + shift) % num_letters
-            shift_letter=None
+
+            shifted_value = (original_value + shift) % num_letters
+
+            shifted_letter = None
             for key, value in my_dict.items():
-                if value==shift_value:
-                    shift_letter=key
+                if value == shifted_value:
+                    shifted_letter = key
                     break
-            return shift_letter
-    shift_message=""
+
+            return shifted_letter
+
+    shifted_message = ""
     for letter in message:
-        shift_letter=shift_letter(letter, shift)
-        shift_message+=shift_letter
-    return shift_message
+        shifted_letter = shift_letter(letter, shift)
+        shifted_message += shifted_letter
+
+    return shifted_message
+
 
 def shift_by_letter(letter, letter_shift):
     '''Shift By Letter.
@@ -134,19 +150,24 @@ def shift_by_letter(letter, letter_shift):
                    'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18,
                    'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}
 
-        num_letters=len(my_dict)
-        original_value=my_dict.get(letter)
+        num_letters = len(my_dict)
+
+        original_value = my_dict.get(letter)
         if original_value is None:
             return letter
-        shift_value=my_dict.get(letter_shift)
+
+        shift_value = my_dict.get(letter_shift)
         if shift_value is None:
             return letter
-        shift_value=(original_value + shift_value) % num_letters
-        shift_letter=None
+
+        shifted_value = (original_value + shift_value) % num_letters
+
+        shifted_letter = None
         for key, value in my_dict.items():
-            if value==shift_value:
-                shift_letter=key
+            if value == shifted_value:
+                shifted_letter = key
                 break
+
         return shifted_letter
 
 def vigenere_cipher(message, key):
@@ -180,17 +201,19 @@ def vigenere_cipher(message, key):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9, 'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}
+    my_dict = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,
+                        'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18,
+                        'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}
 
     key = key.upper() * (len(message) // len(key)) + key.upper()[:len(message) % len(key)]
 
     encrypted_message = ""
     for i in range(len(message)):
-        letters = message[i]
-        if letters == " ":
+        letter = message[i]
+        if letter == " ":
             encrypted_message += " "
         else:
-            message_number = my_dict[letters]
+            message_number = my_dict[letter]
             key_number = my_dict[key[i]]
             encrypted_number = (message_number + key_number) % 26
             encrypted_letter = None
@@ -199,6 +222,7 @@ def vigenere_cipher(message, key):
                     encrypted_letter = char
                     break
             encrypted_message += encrypted_letter
+
     return encrypted_message
 
 def scytale_cipher(message, shift):
@@ -259,10 +283,12 @@ def scytale_cipher(message, shift):
 
     if len(message) % shift != 0:
         message += "_" * (shift - (len(message) % shift))
+
     encoded_message = ""
     for i in range(len(message)):
         index = (i // shift) + (len(message) // shift) * (i % shift)
         encoded_message += message[index]
+
     return encoded_message
 
 def scytale_decipher(message, shift):
@@ -296,16 +322,19 @@ def scytale_decipher(message, shift):
                10: 'K', 11: 'L', 12: 'M', 13: 'N', 14: 'O', 15: 'P', 16: 'Q', 17: 'R', 18: 'S',
                19: 'T', 20: 'U', 21: 'V', 22: 'W', 23: 'X', 24: 'Y', 25: 'Z', 26: '_'}
 
-    number_rows = len(message) // shift
-    grid = [[None] * shift for _ in range(number_rows)]
+    num_rows = len(message) // shift
+
+    grid = [[None] * shift for _ in range(num_rows)]
+
     for i, char in enumerate(message):
-        rows = i // shift
-        cols = i % shift
-        grid[rows][cols] = char
+        row = i // shift
+        col = i % shift
+        grid[row][col] = char
+
     decoded_message = ""
-    for cols in range(shift):
-        for rows in range(number_rows):
-            char = grid[rows][cols]
+    for col in range(shift):
+        for row in range(num_rows):
+            char = grid[row][col]
             decoded_message += char
 
     return decoded_message
