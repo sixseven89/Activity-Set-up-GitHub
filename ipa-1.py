@@ -1,4 +1,3 @@
-
 '''Individual Programming Assignment 1
 
 20 points
