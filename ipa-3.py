@@ -189,7 +189,6 @@ def eta(first_stop, second_stop, route_map):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 
-    def eta(first_stop, second_stop, route_map):
     result = []
     flag = False
     second_stops = ""
