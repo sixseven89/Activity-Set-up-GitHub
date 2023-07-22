@@ -188,45 +188,24 @@ def eta(first_stop, second_stop, route_map):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    
-import pandas as pd
 
-legs_1 = {
-    ("upd", "admu"): {
-        "travel_time_mins": 10
-    },
-    ("admu", "dlsu"): {
-        "travel_time_mins": 35
-    },
-    ("dlsu", "upd"): {
-        "travel_time_mins": 55
-    }
-}
-
-legs_2 = {
-    ('a1', 'a2'): {
-        'travel_time_mins': 10
-    },
-    ('a2', 'b1'): {
-        'travel_time_mins': 10230
-    },
-    ('b1', 'a1'): {
-        'travel_time_mins': 1
-    }
-}
-
-
-leg = {**legs_1, **legs_2}
-leg_df = pd.DataFrame.from_dict(legs, orient='index').reset_index()
-leg_df.columns = ['start_stop', 'end_stop', 'travel_time_mins']
-def eta(first_stop, second_stop, leg_df):
-    forward_legs = leg_df.loc[(leg_df['start_stop'] == first_stop) & (leg_df['end_stop'] == second_stop)]
-    if forward_legs.empty:
-        two_stops = leg_df.loc[leg_df['start_stop'] == first_stop, 'end_stop'].values
-        eta_times = []
-        for two_stop in two_stops:
-            leg1_duration = eta(first_stop, two_stop, leg_df)
-            leg2_duration = eta(two_stop, second_stop, leg_df)
-            eta_times.append(leg1_duration + leg2_duration)
-        return min(eta_times)
-    return forward_legs['travel_time_mins'].values[0]
+    def eta(first_stop, second_stop, route_map):
+    result = []
+    flag = False
+    second_stops = ""
+    while second_stops != second_stop:
+        for key in route_map.keys():
+            if key[0] == first_stop:
+                first_stops = key[0]
+                second_stops = key[1]
+                result.append(route_map[first_stops,second_stops]["travel_time_mins"])
+                flag = True
+            elif flag == True:
+                first_stops = key[0]
+                second_stops = key[1]
+                result.append(route_map[first_stops,second_stops]["travel_time_mins"])
+            else:
+                continue
+            if second_stops == second_stop:
+                break
+    return sum(result)
