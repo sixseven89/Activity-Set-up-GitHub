@@ -1,3 +1,4 @@
+
 '''Individual Programming Assignment 1
 
 20 points
@@ -5,43 +6,7 @@
 This assignment will develop your basic familiarity with Python.
 '''
 
-def savings(gross_pay, tax_rate, expenses):
-    '''Savings.
-    5 points.
-
-    This function calculates the money remaining
-        for an employee after taxes and expenses.
-
-    To get the take-home pay of an employee, we will
-        follow the following process:
-        1. Apply the tax rate to the gross pay of the employee; round down
-        2. Subtract the expenses from the after-tax pay of the employee
-
-    Parameters
-    ----------
-    gross_pay: int
-        the gross pay of an employee for a certain time period, expressed in centavos
-    tax_rate: float
-        the tax rate for a certain time period, expressed as a number between 0 and 1 (e.g., 0.12)
-    expenses: int
-        the expenses of an employee for a certain time period, expressed in centavos
-
-    Returns
-    -------
-    int
-        the number of centavos remaining from an employee's pay after taxes and expenses
-    '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
-    
-    def savings(gross_pay, tax_rate, expenses):
-        product = abs (gross_pay) - abs(gross_pay * tax_rate) - abs (expenses)
-        return (round (product))
-    
-    savings (1000, 0.12, 200)
-
-    def material_waste(total_material, material_units, num_jobs, job_consumption):
-    
+def material_waste(total_material, material_units, num_jobs, job_consumption):
     '''Material Waste.
     5 points.
 
@@ -74,14 +39,13 @@ def savings(gross_pay, tax_rate, expenses):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    def material_waste(total_material, material_units, num_jobs, job_consumption):
-        product = abs (int(total_material)) - abs (int(num_jobs * job_consumption))
-        final_product = f"Amount of remaining material is {product} {material_units}"
-        return (type (final_product))
     
-    material_waste (100, "kg", 10, 2)
+    product = abs (int(total_material)) - abs (int(num_jobs * job_consumption))
+    final_product = f"Amount of remaining material is {product} {material_units}"
+    return (print(final_product))
+material_waste (100, "kg", 10, 2)
 
-    def interest(principal, rate, periods):
+def interest(principal, rate, periods):
     '''Interest.
     5 points.
 
@@ -109,11 +73,9 @@ def savings(gross_pay, tax_rate, expenses):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    def interest(principal, rate, periods):
-        interest_final = int (principal) - float(principal * float (rate * periods))
-        return (round (interest_final))
-    
-    interest (100, 0.12, 2)
+    interest_final = int (principal) - float(principal * float (rate * periods))
+    return (print(round (interest_final)))
+interest (100, 0.12, 2)
 
 def body_mass_index(weight, height):
     '''Body Mass Index.
@@ -149,13 +111,11 @@ def body_mass_index(weight, height):
           '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    def body_mass_index(weight, height):
-        meter_convert = ((height [0]*12) + height [1]) * 0.0254
-        pound_convert = weight * 0.453592
+    meter_convert = ((height [0]*12) + height [1]) * 0.0254
+    pound_convert = weight * 0.453592
         
-        BMI = pound_convert / (meter_convert **2)
+    BMI = pound_convert / (meter_convert **2)
         
-        return (BMI)
-        
-    body_mass_index (123.4, [5, 4])
-    
+    return (print(BMI))
+body_mass_index (123.4, [5, 4])
+
